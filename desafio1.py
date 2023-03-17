@@ -22,26 +22,25 @@ aliquota4 = 0.14
 aliquota5 = 1051
 
 # condições
-if salarioBruto <= 1302:
-    aliquota1 = salarioBruto * aliquota1
-    salarioLiquido = salarioBruto - aliquota1
-    print(f"Salário bruto: R${salarioBruto:.2f}\nINSS: R${aliquota1:.2f}\nSalário líquido: R${salarioLiquido:.2f}")
+if salarioBruto >= 0 and salarioBruto <= 1302:
+    inss = salarioBruto * aliquota1
 
-elif salarioBruto > 1302 and salarioBruto <= 2571.29:
-    aliquota2 = salarioBruto * aliquota2
-    salarioLiquido = salarioBruto - aliquota2
-    print(f"Salário bruto: R${salarioBruto:.2f}\nINSS: R${aliquota2:.2f}\nSalário líquido: R${salarioLiquido:.2f}")
+elif salarioBruto > 1302 and salarioBruto <= 2572.29:
+    inss = salarioBruto * aliquota2
 
 elif salarioBruto > 2571.29 and salarioBruto <= 3856.94:
-    aliquota3 = salarioBruto * aliquota3
-    salarioLiquido = salarioBruto - aliquota3
-    print(f"Salário bruto: R${salarioBruto:.2f}\nINSS: R${aliquota3:.2f}\nSalário líquido: R${salarioLiquido:.2f}")
+    inss = salarioBruto * aliquota3
 
-elif salarioBruto < 3856.94 or salarioBruto <= 7507.49:
-    aliquota4 = salarioBruto * aliquota4
-    salarioLiquido = salarioBruto - aliquota4
-    print(f"Salário bruto: R${salarioBruto:.2f}\nINSS: R${aliquota4:.2f}\nSalário líquido: R${salarioLiquido:.2f}")
+elif salarioBruto < 3856.94 and salarioBruto <= 7507.49:
+    inss = salarioBruto * aliquota4
 
 else:
-    salarioLiquido = salarioBruto - aliquota5
-    print(f"Salário bruto: R${salarioBruto:.2f}\nINSS: R${aliquota5:.2f}\nSalário líquido: R${salarioLiquido:.2f}")
+    inss = salarioBruto - aliquota5
+
+salarioLiquido = salarioBruto - inss
+
+print(f"""
+Sálario...........: R$ {salarioBruto:9.2f}
+INSS..............: R$ {inss:9.2f}
+Salário Líquido...: R$ {salarioLiquido:9.2f}
+""")
